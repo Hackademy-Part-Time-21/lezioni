@@ -57,13 +57,17 @@
 
             <div class="row">
                 @foreach ($articoli as $articolo)
-          
+                
                 <div class="col-4">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
+                          Numero iterazione -> {{ $loop->iteration }}<br>
+                          Sono nella prima iterazione? -> {{$loop->first}}<br>
+                          Sono nell'ultima iterazione? -> {{$loop->last}}<br>
+                          Quante iterazioni ci sono? -> {{$loop->count}}<br>
                           <h5 class="card-title">{{$articolo['titolo']}} - {{$articolo['autore'] ?? 'autore sconosciuto' }}</h5>
                           <p class="card-text">{{$articolo['testo']}}</p>
-                          <a href="{{route('articolo')}}" class="btn btn-primary">Go somewhere</a>
+                          <a href="{{route('articolo',$articolo['id'])}}" class="btn btn-primary">Go somewhere</a>
                         </div>
                       </div>
                 </div>
