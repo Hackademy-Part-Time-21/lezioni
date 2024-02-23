@@ -41,7 +41,7 @@ class AnimeController extends Controller
 
        
         //restiutiamo la vista solo con le informazioni contenute nella chiave data
-        return view('listaAnime',['anime'=>$animeTrovati['data']]);
+        return view('listaAnime',['anime'=>$animeTrovati['data'],'name'=>$nome]);
 
         /*
             Se utilizziamo una return view all'interno di una funzione
@@ -102,6 +102,18 @@ class AnimeController extends Controller
         */
 
         return view('singoloAnime',['anime'=>$anime['data']]);
+    }
+
+    public function animeByCategory($id,$name){
+ 
+
+        //concatena il nome nell'uri dell'API e invia la richiesta get http
+        $response = Http::get('https://api.jikan.moe/v4/anime?genres='.$id);       
+        
+        $animeTrovati = $response->json(); 
+
+        return view('listaAnime',['anime'=>$animeTrovati['data'],'name'=>$name]);
+
     }
 
 

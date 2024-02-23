@@ -16,17 +16,19 @@ use App\Http\Controllers\PageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class,'welcome']);
 
 
 Route::post('/search',[AnimeController::class,'search'])->name('search');
+
+//Route::get('/search',[AnimeController::class,'search'])->name('search');
 
 Route::get('/animeById-{id}',[AnimeController::class,'animeById'])->name('animeById');
 
 Route::get('/superheroes',[PageController::class,'superheroes']);
 
+
+Route::get('/animeByCategory-{id}-{name}',[AnimeController::class,'animeByCategory'])->name('animeByCategory');
 
 
 

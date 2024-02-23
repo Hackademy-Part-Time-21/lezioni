@@ -1,5 +1,6 @@
 <x-layout>
 
+  <h1>Ricerca per : {{$name}}</h1>
     <div class="row">
       @foreach ($anime as $item)
         <div class="col-3">
