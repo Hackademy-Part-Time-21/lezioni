@@ -16,6 +16,7 @@ class Create extends Component
     {
         return view('livewire.users.create');
     }
+    
 
     public function store(){
 
@@ -23,6 +24,10 @@ class Create extends Component
         // creaimo il messaggio flash da mostrare in caso di successo
         session()->flash('success','User successfully created.');
 
-        $this->reset(); // Azzera i valori degli input
+        //Invia un messaggio per informare gli altri componenti ( e in particolare users.index)
+        // che è accaduto qualcosa e il ricevente deve rifare delle operazioni
+        $this->dispatch('refreshUsers')->to('users.index');
+
+        
     }
 }

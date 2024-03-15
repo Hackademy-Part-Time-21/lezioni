@@ -27,5 +27,7 @@ class UserForm extends Form
             'password'=>$this->password
         ]);
 
+        $this->reset(); // Azzera i valori degli input
+
     }
 }

@@ -5,11 +5,14 @@ namespace App\Livewire\Users;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\On; 
 
 class Index extends Component
 {
 
     use WithPagination;
+
+    #[On('refreshUsers')]
     public function render()
     {
         //prendere tutti gli utenti
@@ -32,7 +35,7 @@ class Index extends Component
         // session()->flash('success','User successfully deleted.');
 
         // Appoccio 2 --> impediamo l'eliminazione di Utenti con articoli associati
-        if($user->articles->count>0){
+        if($user->articles->count()>0){
             session()->flash('error','User cannot be deleted.');
 
         }else{
@@ -43,4 +46,6 @@ class Index extends Component
 
 
     }
+
+    
 }

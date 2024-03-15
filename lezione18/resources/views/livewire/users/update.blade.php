@@ -1,7 +1,7 @@
 <div>
     <h2>Modifica un utente</h2>
     
-    <form wire:submit.prevent="store">
+    <form wire:submit.prevent="update">
         <div class="mb-3">
             <label class="form-label">Name</label>
             <input type="text" wire:model.change="name" class="form-control">
@@ -20,7 +20,7 @@
 
         <div class="mb-3">
           <label  class="form-label">Password</label>
-          <input type="text" wire:model.change="password" class="form-control" >
+          <input type="password"  wire:model.change="password" class="form-control" >
           @error('password')
             <span>{{$message}}</span>
             @enderror
